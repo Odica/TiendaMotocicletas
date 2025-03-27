@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825885289528",
+    "project_id": "tiendamotocicletas",
+    "storage_bucket": "tiendamotocicletas.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825885289528:android:26e339b49f483ce60a4acd",
+        "android_client_info": {
+          "package_name": "com.example.tienda_online"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqqM49tSGq8dI9ea8CW6b_5IUoQ_AF-fg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
