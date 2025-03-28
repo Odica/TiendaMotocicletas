@@ -1,65 +1,73 @@
-// import 'package:flutter/material.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'home_screen.dart';
+import 'package:flutter/material.dart';
+import 'package:tienda_online/screens/ingresar.dart';
+import 'package:tienda_online/screens/registrarse.dart';
 
-// class LoginScreen extends StatefulWidget {
-//   @override
-//   _LoginScreenState createState() => _LoginScreenState();
-// }
 
-// class _LoginScreenState extends State<LoginScreen> {
-//   final _emailController = TextEditingController();
-//   final _passwordController = TextEditingController();
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
-//   Future<void> _login() async {
-//     final email = _emailController.text;
-//     final password = _passwordController.text;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(image: AssetImage('images/wallpaper.jpg'), fit: BoxFit.cover)
+          ),
+          child: Column(children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(5, 120, 5, 100),
+            ),
+              Image.asset(
+                'images/logotipo.png',
+                height: 175,
+              ),
+            SizedBox(height: 50,),
+            Button(onPressed:() { 
+              Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Registrarse()));
+             } , 
+             text: 'REGISTRARSE',
+             ),
+             SizedBox(height: 45,),
+               Button(onPressed:() { 
+              Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => Ingresar()));
+             } , 
+             text: 'INGRESAR',
+             ),
+          ],),
+        )
+      ),
+    );
+  }
+}
 
-//     if (email == 'admin@example.com' && password == '123456') {
-//       // Guardar datos en SharedPreferences
-//       final prefs = await SharedPreferences.getInstance();
-//       await prefs.setBool('isLoggedIn', true);
-//       await prefs.setString('email', email);
+class Button extends StatelessWidget {
+  String text;
+  final void Function() onPressed;
+    Button({
+    super.key, required this.text,required this.onPressed,
+  });
 
-//       // Redirigir a HomeScreen
-//       Navigator.of(
-//         context,
-//       ).pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
-//     } else {
-//       ScaffoldMessenger.of(
-//         context,
-//       ).showSnackBar(const SnackBar(content: Text('Credenciales incorrectas')));
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(title: const Text('Iniciar Sesión')),
-//       body: Padding(
-//         padding: const EdgeInsets.all(16),
-//         child: Column(
-//           children: [
-//             TextField(
-//               controller: _emailController,
-//               decoration: const InputDecoration(
-//                 labelText: 'Correo electrónico',
-//               ),
-//               keyboardType: TextInputType.emailAddress,
-//             ),
-//             TextField(
-//               controller: _passwordController,
-//               decoration: const InputDecoration(labelText: 'Contraseña'),
-//               obscureText: true,
-//             ),
-//             const SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: _login,
-//               child: const Text('Iniciar Sesión'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      width: 200,
+     
+    child: ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.purple,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30.0))),
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.black, fontSize: 22),
+      )),
+    );
+  }
+}  
